@@ -4,7 +4,7 @@ FROM ubuntu:16.04
 # Install tox.
 # create a new user to run tests.
 RUN apt-get -y update \
-    && apt-get -y install python-pip python3-pip \
+    && apt-get -y install python-pip python3-pip wget \
        git postgresql-client libpq-dev python3-dev \
        libsqlite3-dev libmysqlclient-dev libreadline-dev python-dev \
 	&& rm -rf /var/lib/apt/lists/* \
@@ -23,7 +23,7 @@ RUN wget https://www.python.org/ftp/python/3.4.6/Python-3.4.6.tgz \
 
 # Download and compile Python 3.6
 WORKDIR /tmp/
-RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz \	
+RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz \
     && tar xzf Python-3.6.1.tgz \
     && cd /tmp/Python-3.6.1 \
     && ./configure \
